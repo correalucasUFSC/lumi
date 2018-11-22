@@ -1,21 +1,19 @@
+import Loan from '../../models/loan.js';
+
 /**
  * Get all Loans
  * @param req
  * @param res
  * @returns void
  */
-export function getLoans(req, res) {
-  // This is just sample data. Please structure your code in the best way possible. Don't feel obliged to stick to this structure
-  return res.send([
-    {
-      name: 'Nick Tong\'s Salad Tong Store',
-      industry: 'Retail',
-      health: 84,
-    },
-    {
-      name: 'Paul\'s Pizzeria',
-      industry: 'Hospitality',
-      health: 85,
-    },
-  ]);
+export async function getLoans(req, res) {
+  const page = 1;
+  const limit = 10;
+  const loans = Loan
+    .find({})
+    .sort({ name: 1 })
+    .limit(limit)
+    .skip(limit * (page - 1));
+  const result = await loans.exec();
+  return res.send(result);
 }
