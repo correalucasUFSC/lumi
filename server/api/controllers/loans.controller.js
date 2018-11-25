@@ -24,8 +24,22 @@ export async function getLoans(req, res) {
   return res.send({loans: resultLoans, pages: pagesCount, page: page});
 }
 
-export function getIndustryNames(req, res) {
-  return res.send(['Hospitality', 'Accomodation']);
+/**
+ * Get all the different industry names
+ * @param req
+ * @param res
+ */
+export async function getIndustryNames(req, res) {
+  const loans = Loan.aggregate([
+    {
+      $group: {
+        _id: '$industry',
+      },
+    },
+  ]);
+  const results = await loans.exec();
+  const industries = results.map(element => element._id);
+  return res.send(industries);
 }
 
 /**

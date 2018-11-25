@@ -8,7 +8,6 @@ const healthConstants = require('../../constants.json').HEALTH;
 class FilterForm extends Component{
   constructor(props) {
     super(props);
-    //const industries = this.props.industries.map(element => element.industry);
     this.state = {
       industrySelectValue: this.props.industries[0],
       healthSelectValue: this.healthFilter().slice(0, 1)[0],
