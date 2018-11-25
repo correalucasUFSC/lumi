@@ -1,0 +1,13 @@
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marginRight {
+  margin-right: 10px;
+}
+
+.fontSizeRegular {
+  font-size: 19px;
+}

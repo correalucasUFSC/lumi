@@ -1,10 +1,11 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-
 // Import Actions
 import { fetchData } from './LoansActions';
 import Gauge from 'react-svg-gauge';
 import styles from './Loans.css';
+import FilterForm from '../../components/FilterForm';
+import BasePagination from '../../components/BasePagination';
 
 // Import Selectors
 import { getLoans } from './LoansReducer';
@@ -19,6 +20,10 @@ class LoansPage extends Component {
     if (val > 50) return 'gold';
     return 'red';
   }
+
+  handleSubmit = formState => {
+    //TODO: implement filter
+  };
 
   render() {
     const { loans } = this.props;
@@ -56,7 +61,13 @@ class LoansPage extends Component {
     }
     return (
       <div>
+        <div className={styles.marginTop}>
+          <FilterForm onsubmit={this.handleSubmit} />
+        </div>
         {list}
+        <div className={styles.marginTop}>
+          <BasePagination />
+        </div>
       </div>
     );
   }
