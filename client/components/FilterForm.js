@@ -8,13 +8,12 @@ const healthConstants = require('../../constants.json').HEALTH;
 class FilterForm extends Component{
   constructor(props) {
     super(props);
-
+    //const industries = this.props.industries.map(element => element.industry);
     this.state = {
-      industrySelectValue: this.industryFilter().slice(0, 1)[0],
+      industrySelectValue: this.props.industries[0],
       healthSelectValue: this.healthFilter().slice(0, 1)[0],
     };
 
-    this.industryFilter = this.industryFilter.bind(this);
     this.healthFilter = this.healthFilter.bind(this);
     this.handleHealthChange = this.handleHealthChange.bind(this);
     this.handleIndustryChange = this.handleIndustryChange.bind(this);
@@ -39,12 +38,6 @@ class FilterForm extends Component{
     this.props.onsubmit(this.state);
   };
 
-
-  industryFilter = () => {
-    return ['Hospitality', 'Retail', 'Accomodation', 'Agriculture'];
-    //TODO: get this from db
-  };
-
   healthFilter = () => {
     return [healthConstants.HIGH, healthConstants.MEDIUM, healthConstants.LOW];
   };
@@ -59,7 +52,7 @@ class FilterForm extends Component{
               onChange={this.handleIndustryChange}
               className={styles.buttonContainer}
               selectedValue={this.state.industrySelectValue}
-              options={this.industryFilter()}
+              options={this.props.industries}
               label="Industry"
             />
           </div>
@@ -82,6 +75,7 @@ class FilterForm extends Component{
 
 FilterForm.propTypes = {
   onsubmit: PropTypes.func.isRequired,
+  industries: PropTypes.array,
 };
 
 
