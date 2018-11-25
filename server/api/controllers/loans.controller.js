@@ -1,4 +1,5 @@
 import Loan from '../../models/loan.js';
+const healthConstants = require('../../../constants.json').HEALTH;
 
 /**
  * Get all Loans with pagination
@@ -31,13 +32,13 @@ export async function getFilteredLoans(req, res) {
   const { industrySelectValue, healthSelectValue } = filter;
   let healthFilter;
   switch (healthSelectValue) {
-    case 'Low':
+    case healthConstants.LOW:
       healthFilter = { $lt: 50 };
       break;
-    case 'Medium':
+    case healthConstants.MEDIUM:
       healthFilter = { $gte : 50, $lte: 80 };
       break;
-    case 'High':
+    case healthConstants.HIGH:
       healthFilter = { $gt : 80 };
       break;
     default:

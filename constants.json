@@ -1,0 +1,7 @@
+{
+  "HEALTH": {
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High"
+  }
+}

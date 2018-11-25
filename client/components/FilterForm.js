@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import styles from './FilterForm.css';
 import BaseButton from './BaseButton';
 import SelectFilter from './SelectFilter';
+const healthConstants = require('../../constants.json').HEALTH;
 
 
 class FilterForm extends Component{
@@ -45,7 +46,7 @@ class FilterForm extends Component{
   };
 
   healthFilter = () => {
-    return ['High', 'Medium', 'Low'];
+    return [healthConstants.HIGH, healthConstants.MEDIUM, healthConstants.LOW];
   };
 
   render() {
