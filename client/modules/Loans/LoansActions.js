@@ -16,3 +16,10 @@ export function fetchData() {
     return callApi('/loans').then(res => dispatch(gotData(res)));
   };
 }
+
+export function filterLoans(filter) {
+  return (dispatch) => {
+    const stringFilter = JSON.stringify(filter);
+    return callApi(`/loans/${stringFilter}`).then(res => dispatch(gotData(res)));
+  };
+}
