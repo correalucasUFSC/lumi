@@ -1,0 +1,19 @@
+.select {
+  border: 1px solid #ccc;
+  width: 120px;
+  border-radius: 3px;
+}
+
+.select select {
+  padding: 5px 8px;
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background: transparent none;
+  -webkit-appearance: none;
+}
+
+.select select:focus {
+  outline: none;
+}
+

@@ -1,0 +1,14 @@
+.color{
+  background-color: #4286f4;
+  color: #fff;
+}
+
+.size {
+  min-width: 50px;
+  min-height: 30px;
+}
+
+.rounded {
+  border-radius: 20%;
+}
+

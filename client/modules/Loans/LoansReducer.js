@@ -1,7 +1,10 @@
 import { GOT_LOANS } from './LoansActions';
 
 // Initial State
-const initialState = { data: [] };
+const initialState = {
+  data: [],
+  page: 1,
+};
 
 const LoansReducer = (state = initialState, action) => {
   switch (action.type) {

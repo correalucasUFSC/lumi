@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.buttonContainer {
+
+}
+
+.marginRight {
+  margin-right: 30px;
+}
