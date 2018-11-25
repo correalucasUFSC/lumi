@@ -16,7 +16,7 @@ class BasePagination extends Component {
   render() {
     return (
       <div className={styles.paginationContainer}>
-        { Number(this.props.page) - 1 < Number(this.props.pages) ? null : <FontAwesomeIcon
+        {  Number(this.props.page) - 1 < 0 ? null : <FontAwesomeIcon
           onClick={this.handleDecrement}
           className={styles.marginRight}
           icon="minus"
