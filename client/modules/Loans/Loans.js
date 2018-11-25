@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 // Import Actions
-import { fetchData } from './LoansActions';
+import { fetchData, filterLoans } from './LoansActions';
 import Gauge from 'react-svg-gauge';
 import styles from './Loans.css';
 import FilterForm from '../../components/FilterForm';
@@ -22,7 +22,7 @@ class LoansPage extends Component {
   }
 
   handleSubmit = formState => {
-    //TODO: implement filter
+    this.props.dispatch(filterLoans(formState));
   };
 
   render() {
