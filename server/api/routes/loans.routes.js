@@ -3,9 +3,12 @@ import * as LoansController from '../controllers/loans.controller';
 const router = new Router();
 
 // Get all Loans
-router.route('/loans').get(LoansController.getLoans);
+router.route('/loans/:page').get(LoansController.getLoans);
 
 // Get filtered Loans
-router.route('/loans/:filter').get(LoansController.getFilteredLoans);
+router.route('/loans/:filter/:page').get(LoansController.getFilteredLoans);
+
+// Get industry names
+router.route('/industries').get(LoansController.getIndustryNames);
 
 export default router;

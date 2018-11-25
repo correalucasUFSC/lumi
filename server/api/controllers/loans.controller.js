@@ -8,15 +8,24 @@ const healthConstants = require('../../../constants.json').HEALTH;
  * @returns {Promise.<void>}
  */
 export async function getLoans(req, res) {
-  const page = 1;
+  const page = req.params.page;
   const limit = 10;
+  const loansCount = Loan
+    .find({})
+    .count();
   const loans = Loan
     .find({})
     .sort({ name: 1 })
     .limit(limit)
     .skip(limit * (page - 1));
-  const result = await loans.exec();
-  return res.send(result);
+  const resultLoans = await loans.exec();
+  const resultCount = await loansCount.exec();
+  const pagesCount = Math.ceil(resultCount / limit);
+  return res.send({loans: resultLoans, pages: pagesCount, page: page});
+}
+
+export function getIndustryNames(req, res) {
+  return res.send(['Hospitality', 'Accomodation']);
 }
 
 /**
@@ -26,7 +35,7 @@ export async function getLoans(req, res) {
  * @returns {Promise.<void>}
  */
 export async function getFilteredLoans(req, res) {
-  const page = 1;
+  const page = req.params.page;
   const limit = 10;
   const filter = JSON.parse(req.params.filter);
   const { industrySelectValue, healthSelectValue } = filter;
@@ -44,11 +53,16 @@ export async function getFilteredLoans(req, res) {
     default:
       break;
   }
-  const loans = Loan
+  const loansCount = Loan
+    .find({ industry: industrySelectValue, health: healthFilter })
+    .count();
+  const filteredLoans = Loan
     .find({ industry: industrySelectValue, health: healthFilter })
     .sort({ health: -1 })
     .limit(limit)
     .skip(limit * (page - 1));
-  const result = await loans.exec();
-  return res.send(result);
+  const resultLoans = await filteredLoans.exec();
+  const resultCount = await loansCount.exec();
+  const pagesCount = Math.ceil(resultCount / limit);
+  return res.send({loans: resultLoans, pages: pagesCount, page: page});
 }
