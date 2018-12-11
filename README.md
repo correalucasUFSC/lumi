@@ -7,11 +7,11 @@ Technologies in use:
 
 Health Filter:
 
-■ High - health above 80
+- High - health above 80
 
-■ Medium - health between 50 and 80
+- Medium - health between 50 and 80
 
-■ Low - health below 50
+- Low - health below 50
 
 Industry Filter:
 
