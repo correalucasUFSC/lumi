@@ -1,6 +1,3 @@
-Small challange project that consists in getting the right data from the database and create a couple of filters 
-(by industry and health) on the client-side
-
 Technologies in use: 
 
 - MongoDB, Mongoose and ReactJS
